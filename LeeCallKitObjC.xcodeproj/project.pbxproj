@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		735EF229268E04B600DC0682 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735EF228268E04B600DC0682 /* CallKit.framework */; };
+		735EF232268E07F900DC0682 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735EF231268E07F900DC0682 /* PushKit.framework */; };
 		738A6DAA268E020400824243 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 738A6DA9268E020400824243 /* AppDelegate.m */; };
 		738A6DAD268E020400824243 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 738A6DAC268E020400824243 /* SceneDelegate.m */; };
 		738A6DB0268E020400824243 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 738A6DAF268E020400824243 /* ViewController.m */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		735EF228268E04B600DC0682 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
 		735EF22E268E073800DC0682 /* LeeCallKitObjC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LeeCallKitObjC.entitlements; sourceTree = "<group>"; };
+		735EF231268E07F900DC0682 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		738A6DA5268E020400824243 /* LeeCallKitObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeeCallKitObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		738A6DA8268E020400824243 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		738A6DA9268E020400824243 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				735EF229268E04B600DC0682 /* CallKit.framework in Frameworks */,
+				735EF232268E07F900DC0682 /* PushKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +52,7 @@
 		735EF227268E04B600DC0682 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				735EF231268E07F900DC0682 /* PushKit.framework */,
 				735EF228268E04B600DC0682 /* CallKit.framework */,
 			);
 			name = Frameworks;
