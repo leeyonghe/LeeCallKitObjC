@@ -7,7 +7,7 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()<PKPushRegistryDelegate,UNUserNotificationCenterDelegate, CXProviderDelegate>
+@interface AppDelegate ()<PKPushRegistryDelegate, UNUserNotificationCenterDelegate, CXProviderDelegate>
 
 @end
 
