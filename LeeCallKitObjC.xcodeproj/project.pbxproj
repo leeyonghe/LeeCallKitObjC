@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		735EF229268E04B600DC0682 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735EF228268E04B600DC0682 /* CallKit.framework */; };
 		738A6DAA268E020400824243 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 738A6DA9268E020400824243 /* AppDelegate.m */; };
 		738A6DAD268E020400824243 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 738A6DAC268E020400824243 /* SceneDelegate.m */; };
 		738A6DB0268E020400824243 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 738A6DAF268E020400824243 /* ViewController.m */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		735EF228268E04B600DC0682 /* CallKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CallKit.framework; path = System/Library/Frameworks/CallKit.framework; sourceTree = SDKROOT; };
+		735EF22E268E073800DC0682 /* LeeCallKitObjC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LeeCallKitObjC.entitlements; sourceTree = "<group>"; };
 		738A6DA5268E020400824243 /* LeeCallKitObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeeCallKitObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		738A6DA8268E020400824243 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		738A6DA9268E020400824243 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -36,17 +39,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				735EF229268E04B600DC0682 /* CallKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		735EF227268E04B600DC0682 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				735EF228268E04B600DC0682 /* CallKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		738A6D9C268E020400824243 = {
 			isa = PBXGroup;
 			children = (
 				738A6DA7268E020400824243 /* LeeCallKitObjC */,
 				738A6DA6268E020400824243 /* Products */,
+				735EF227268E04B600DC0682 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +74,7 @@
 		738A6DA7268E020400824243 /* LeeCallKitObjC */ = {
 			isa = PBXGroup;
 			children = (
+				735EF22E268E073800DC0682 /* LeeCallKitObjC.entitlements */,
 				738A6DA8268E020400824243 /* AppDelegate.h */,
 				738A6DA9268E020400824243 /* AppDelegate.m */,
 				738A6DAB268E020400824243 /* SceneDelegate.h */,
@@ -291,6 +305,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LeeCallKitObjC/LeeCallKitObjC.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LeeCallKitObjC/Info.plist;
@@ -310,6 +325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LeeCallKitObjC/LeeCallKitObjC.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LeeCallKitObjC/Info.plist;
