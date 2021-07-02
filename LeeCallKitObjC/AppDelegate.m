@@ -6,9 +6,13 @@
 //
 
 #import "AppDelegate.h"
+#import <CallKit/CallKit.h>
+#import <PushKit/PushKit.h>
 
-@interface AppDelegate ()<PKPushRegistryDelegate, UNUserNotificationCenterDelegate, CXProviderDelegate>
-
+@interface AppDelegate ()<PKPushRegistryDelegate, CXProviderDelegate>{
+    CXProvider *provider;
+}
+    
 @end
 
 @implementation AppDelegate
@@ -16,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self requestPushNotificationPermissions];
+    [self voipRegistration];
     
     return YES;
 }
@@ -39,43 +43,20 @@
 }
 
 - (void) voipRegistration{
+    
     PKPushRegistry *voipRegistry = [[PKPushRegistry alloc] initWithQueue: dispatch_get_main_queue()];
     voipRegistry.delegate = self;
     voipRegistry.desiredPushTypes = [NSSet setWithObject:PKPushTypeVoIP];
-}
-
-- (void)requestPushNotificationPermissions {
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
-        
-        switch (settings.authorizationStatus) {
-            case UNAuthorizationStatusNotDetermined: {
-                center.delegate = self;
-                [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error)
-                 {
-                    if(granted) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [[UIApplication sharedApplication] registerForRemoteNotifications];
-                        });
-                    } else {
-                        
-                    }
-                }];
-                break;
-            }
-            case UNAuthorizationStatusDenied: {
-                break;
-            }
-            case UNAuthorizationStatusAuthorized: {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[UIApplication sharedApplication] registerForRemoteNotifications];
-                });
-                break;
-            }
-            default:
-                break;
-        }
-    }];
+    
+    CXProviderConfiguration *configuration = [[CXProviderConfiguration alloc] init];
+    configuration.includesCallsInRecents = NO;
+    configuration.supportsVideo = YES;
+    configuration.supportedHandleTypes = [[NSSet alloc] initWithObjects:[NSNumber numberWithInt:(int)CXHandleTypePhoneNumber], nil];
+//    configuration.maximumCallGroups = 1;
+//    configuration.maximumCallsPerCallGroup = 5;
+    provider = [[CXProvider alloc] initWithConfiguration:configuration];
+    [provider setDelegate:self queue:dispatch_get_main_queue()];
+    
 }
 
 - (void)pushRegistry:(nonnull PKPushRegistry *)registry didUpdatePushCredentials:(nonnull PKPushCredentials *)pushCredentials forType:(nonnull PKPushType)type {
@@ -84,6 +65,21 @@
 
 - (void)providerDidReset:(nonnull CXProvider *)provider {
 
+}
+
+- (void)pushRegistry:(PKPushRegistry *)registry didReceiveIncomingPushWithPayload:(PKPushPayload *)payload forType:(PKPushType)type withCompletionHandler:(void (^)(void))completion{
+    
+    [self CallView];
+    
+}
+
+- (void)CallView{
+    CXCallUpdate *update = [[CXCallUpdate alloc] init];
+    update.remoteHandle = [[CXHandle alloc]initWithType:CXHandleTypePhoneNumber value:@"010-1111-2222"];
+//    update.hasVideo = true;
+    update.supportsHolding = YES;
+    NSUUID * uuid = [NSUUID UUID];
+    [provider reportNewIncomingCallWithUUID:uuid update:update completion:^(NSError * _Nullable error) { NSLog(@"reportNewIncomingCall error : %@" , error); }];
 }
 
 @end
